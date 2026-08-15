@@ -1,4 +1,4 @@
-# NC2000 for BBK 9588
+# BBK9588-NC2000模拟器
 
 在 BBK / 步步高 9588 上运行文曲星 NC2000/NC2600 固件的原生 BDA 移植。
 
@@ -41,6 +41,14 @@ build\nc2000_bbk9588\NC2000.bda
 
 正式版本默认使用 `-O2` 和 LTO。仅调试 PCM 输出时才使用
 `.\tools\build_bbk9588.ps1 -DspSelfTest`；不要发布带自测试音的构建。
+
+GitHub Actions 会在 `main`、Pull Request 和所有 tag 上执行相同构建。推送 tag 后，
+工作流会自动创建对应的 GitHub Release，并把 `NC2000.bda` 作为附件上传：
+
+```powershell
+git tag v0.1.0
+git push origin v0.1.0
+```
 
 ## ROM / NAND
 

@@ -1,11 +1,20 @@
-name: Build BBK 9588 BDA
+name: Build and release BBK 9588 BDA
 
 on:
   push:
+    branches:
+      - main
+    tags:
+      - "*"
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: bbk9588-bda-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -26,3 +35,36 @@ jobs:
       - name: Build and validate NC2000.bda
         shell: pwsh
         run: .\tools\build_bbk9588.ps1
+
+      - name: Upload BDA workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: NC2000-bda
+          path: build/nc2000_bbk9588/NC2000.bda
+          if-no-files-found: error
+
+  release:
+    if: github.ref_type == 'tag'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download BDA artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: NC2000-bda
+          path: release
+
+      - name: Create GitHub Release and upload NC2000.bda
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" release/NC2000.bda --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" release/NC2000.bda \
+              --verify-tag --generate-notes --title "$GITHUB_REF_NAME"
+          fi
