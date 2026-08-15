@@ -99,12 +99,15 @@ B:\NC2000\35.nor
 
 | 路径 | 内容 |
 |---|---|
+| `src/core/` | CPU、内存映射和模拟器运行核心 |
+| `src/devices/` | NAND/NOR、键盘、LCD、DSP 接口和其他硬件模拟 |
+| `src/desktop/` | SDL 桌面入口、命令行、设置和调试工具 |
 | `platform/bbk9588/` | BDA 入口、前端、JIT、音频、运行时和精简 libc |
 | `dsp/` | SPDS104A DSP 解码器及上游记录 |
 | `tools/` | 交叉构建、BDA 打包和 SDK 模拟器辅助脚本 |
 | `docs/` | 9588 使用、性能和诊断文档 |
 | `sdk/` | BBK 9588 BDA SDK Git submodule |
-| 其余核心源码 | 继承自原 NC2000 模拟器 |
+| `ansi/`、`compare/`、`lcdstripe/` | 继承自原 NC2000 的 CPU 与桌面辅助模块 |
 
 ## 当前限制
 

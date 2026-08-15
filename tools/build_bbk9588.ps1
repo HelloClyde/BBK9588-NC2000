@@ -67,18 +67,18 @@ $sources = @(
     'platform\bbk9588\sound_bbk.cpp',
     'platform\bbk9588\frontend.cpp',
     'dsp\dsp.cpp',
-    'comm.cpp',
-    'nc2000.cpp',
-    'mem.cpp',
-    'io_new.cpp',
-    'NekoDriverIO.cpp',
-    'nand.cpp',
-    'nor.cpp',
-    'ram.cpp',
-    'cpu.cpp',
+    'src\core\comm.cpp',
+    'src\core\nc2000.cpp',
+    'src\core\mem.cpp',
+    'src\devices\io_new.cpp',
+    'src\devices\NekoDriverIO.cpp',
+    'src\devices\nand.cpp',
+    'src\devices\nor.cpp',
+    'src\core\ram.cpp',
+    'src\core\cpu.cpp',
     'ansi\w65c02cpu.cpp',
     'ansi\w65c02op.cpp',
-    'iv_uart.cpp'
+    'src\devices\iv_uart.cpp'
 )
 
 $common = @(
@@ -89,6 +89,9 @@ $common = @(
     '-DBBK9588', '-DHANDYPSP', '-DNDEBUG',
     '-Wno-unused-variable', '-Wno-unused-function', '-Wno-unused-parameter',
     '-I', $repoRoot,
+    '-I', (Join-Path $repoRoot 'src\core'),
+    '-I', (Join-Path $repoRoot 'src\devices'),
+    '-I', (Join-Path $repoRoot 'src\desktop'),
     '-I', (Join-Path $repoRoot 'platform\bbk9588\libc\include'),
     '-I', (Join-Path $sdkRoot 'sdk\include')
 )
