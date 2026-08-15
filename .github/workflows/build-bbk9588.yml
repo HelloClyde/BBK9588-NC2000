@@ -1,0 +1,28 @@
+name: Build BBK 9588 BDA
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out source and SDK
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build and validate NC2000.bda
+        shell: pwsh
+        run: .\tools\build_bbk9588.ps1

@@ -1,0 +1,19 @@
+#pragma once
+#include <stdio.h>
+namespace std {
+using ::FILE;
+using ::fclose;
+using ::fflush;
+using ::fopen;
+using ::fprintf;
+using ::fread;
+using ::fseek;
+using ::ftell;
+using ::fwrite;
+using ::printf;
+using ::puts;
+using ::snprintf;
+using ::sprintf;
+using ::sscanf;
+using ::vsnprintf;
+}

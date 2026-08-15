@@ -1,0 +1,42 @@
+# Build products and local toolchains
+/build/
+/.cache/
+/.toolchain/
+/sdk/.toolchain/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Firmware, writable media and emulator state
+/roms/
+*.nand
+*.nand0
+*.nor
+*.state
+*.sav
+*.srm
+*.log
+*.LOG
+
+# Generated BDA/debug artifacts outside build/
+*.bda
+*.elf
+*.map
+*.o
+*.a
+*.pcm
+*.wav
+
+# Local image-generation intermediate; the final menu icon is tracked.
+/platform/bbk9588/assets/nc2000_icon_chroma.png
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+*.swp
+*.user
+.idea/
+.vscode/

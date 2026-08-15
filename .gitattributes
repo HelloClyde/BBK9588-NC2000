@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+*.png binary
+*.bmp binary
+*.bin binary
+*.bda binary
+*.nand binary
+*.nand0 binary
+*.nor binary
+*.wav binary
