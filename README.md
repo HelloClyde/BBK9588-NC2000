@@ -10,6 +10,35 @@ BBK 9588 的第三方移植版，不是原项目的官方发行。桌面版模�
 > 按键、NAND 写回、蜂鸣器、字典查询与 DSP 单词发音；不同机器、固件和 NAND 内容仍可能
 > 表现不同。
 
+## 界面预览
+
+<p align="center">
+  <img src="docs/images/nc2000-main-menu.png" width="240" alt="BBK9588-NC2000 主界面与触摸软键盘">
+</p>
+
+<p align="center"><sub>SDK 模拟器实机尺寸截图：1× LCD、完整软键盘和右上角系统退出键。</sub></p>
+
+## 快速开始
+
+1. 从 [GitHub Releases](https://github.com/HelloClyde/BBK9588-NC2000/releases)
+   下载最新的 `NC2000.bda`。如果尚无 Release，请按下文“构建”一节从源码生成。
+2. 按原 NC2000 项目的 [Releases / Rom Files 说明](https://github.com/wangyu-/NC2000/releases)
+   准备你有权使用的同一套 `.nand`、`.nand0` 和 `.nor` dump。
+3. 将文件放入 `B:\NC2000\`，默认文件名为 `35.nand`、`35.nand0`、`35.nor`；
+   B 盘不存在完整文件组时会自动回退到 `A:\NC2000\`。
+4. 把 `NC2000.bda` 安装到 9588 的应用程序目录并启动。两处默认目录都没有完整文件组时，
+   程序会打开文件选择器，让你选择 `.nand`。
+
+> 模拟器会写回 NAND/NOR。首次运行前请备份原始 dump。
+
+| 操作 | 作用 |
+|---|---|
+| `ESC` | 文曲星“跳出 / AC”，短按逐级返回 |
+| `←` `↑` `↓` `→` | 菜单导航 |
+| `SAY` | 字典发音 |
+| `?` | 文曲星“求助”键 |
+| 右上角 `X` | 系统确认后保存并退出 BDA |
+
 ## 功能
 
 - NC2000 原生 160×80 LCD，以 1× 比例居中显示
